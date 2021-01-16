@@ -4,7 +4,7 @@ import com.ncamc.springcloud.entities.Payment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 /*
-* 形成肌肉记忆：1. 只要有Dao，就上Mapper注解，repository注解可能会有问题
+* 形成肌肉记忆：1. 只要有Dao，就上Mapper注解(repository注解可能会有问题)
 * */
 @Mapper
 public interface PaymentDao {
