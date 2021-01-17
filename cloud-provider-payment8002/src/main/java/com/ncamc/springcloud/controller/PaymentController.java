@@ -3,11 +3,15 @@ package com.ncamc.springcloud.controller;
 import com.ncamc.springcloud.entities.CommonResult;
 import com.ncamc.springcloud.entities.Payment;
 import com.ncamc.springcloud.service.PaymentService;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -18,6 +22,11 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
+
+    //服务发现的client端，包括8001,8002服务的基础信息等
+    @Resource
+    private DiscoveryClient discoveryClient;
+
     /*数据库的操作者，发Post请求*/
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment){
@@ -40,5 +49,18 @@ public class PaymentController {
         } else {
             return new CommonResult(444,"没有对应记录,查询id: "+id,null);
         }
+    }
+
+    @GetMapping("/payment/discovery")
+    public Object discovery(){
+        List<String> services = discoveryClient.getServices();
+        for (String service : services) {
+            log.info("================service: "+service);
+        }
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for (ServiceInstance instance : instances) {
+            log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
+        }
+        return this.discoveryClient;
     }
 }
