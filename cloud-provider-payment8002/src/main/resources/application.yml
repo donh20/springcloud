@@ -1,6 +1,6 @@
 #一般来说配置文件都是直接粘贴的
 server:
-  port: 8001
+  port: 8002
 spring:
   application:
     name: cloud-payment-service
