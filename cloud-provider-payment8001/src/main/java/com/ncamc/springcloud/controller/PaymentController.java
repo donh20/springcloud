@@ -39,7 +39,7 @@ public class PaymentController {
         if (payment!=null) {
             return new CommonResult(200,"查询数据库成功, serverPort: "+serverPort,payment);
         } else {
-            return new CommonResult(444,"没有对应记录,查询id: "+id,null);
+            return new CommonResult(444,"没有对应记录, 查询id: "+id,null);
         }
     }
 }
