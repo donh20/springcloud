@@ -2,15 +2,19 @@ package com.ncamc.springcloud.controller;
 
 import com.ncamc.springcloud.entities.CommonResult;
 import com.ncamc.springcloud.entities.Payment;
+import com.ncamc.springcloud.lb.LoadBalancer;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.net.URI;
+import java.util.List;
 
 /*
 * 要调用的是8001，两个端口，两个服务，不太可能用private了
@@ -24,6 +28,10 @@ public class OrderController {
     public static final String PAYMENT_URL = "http://cloud-payment-service";
     @Resource
     private RestTemplate restTemplate;
+    @Resource
+    private LoadBalancer LoadBalancer;  //一个接口，有一个重写实现，可以直接实例化，如果实现多个的话会报错
+    @Resource
+    private DiscoveryClient discoveryClient;
     /*
     * 一般读操作用get，写操作用post请求
     * 客户端发的是getMapping请求
@@ -55,7 +63,17 @@ public class OrderController {
         } else {
             return new CommonResult<>(444,"操作失败");
         }
-
+    }
+    @GetMapping(value = "/consumer/payment/lb")
+    public String getPaymentLB() {
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        if (instances == null || instances.size()<=0) {
+            return null;
+        } else {
+            ServiceInstance serviceInstance = LoadBalancer.instances(instances);
+            URI uri = serviceInstance.getUri();
+            return restTemplate.getForObject(uri+"/payment/lb",String.class);
+        }
     }
 
 }
