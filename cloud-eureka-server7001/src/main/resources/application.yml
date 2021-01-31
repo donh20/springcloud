@@ -6,9 +6,9 @@ eureka:
     hostname: eureka7001.com    #eureka服务端的实例名称
     prefer-ip-address: true
   client: #false表示不向注册中心注册自己.可以理解为,所有企业都跑来入驻写字楼，但是eureka自己不会向写字楼交钱
-    register-with-eureka: true
+    register-with-eureka: false
     #false表示自己就是注册中心，职责就是维护服务实例，并不需要去检索服务
-    fetch-registry: true
+    fetch-registry: false
     service-url:
       #设置与Eureka server交互的地址查询服务和注册服务
       defaultZone: http://eureka7002.com:7002/eureka/
@@ -17,7 +17,7 @@ eureka:
   server:
     #关闭自我保护机制，保证当服务不可用时及时剔除
     enable-self-preservation: false
-    eviction-interval-timer-in-ms: 1000
+    eviction-interval-timer-in-ms: 1000 # 扫描失效服务的间隔时间（缺省为60*1000ms）
 
 #当一个服务未按时进行心跳续约时，Eureka会统计最近15分钟心跳失败的服务实例的比例是否超过了85%。
 #在生产环境下，因为网络延迟等原因，心跳失败实例的比例很有可能超标，但是此时就把服务剔除列表并不

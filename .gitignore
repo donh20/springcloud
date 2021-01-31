@@ -1,0 +1,53 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.idea/$CACHE_FILE$
+.idea/.gitignore
+.idea/.name
+.idea/compiler.xml
+.idea/dataSources.xml
+.idea/encodings.xml
+.idea/kotlinc.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+cloud-api-commons/target/generated-sources/
+cloud-consumer-order80/target/classes/META-INF/
+cloud-consumer-order80/target/classes/application.yml
+cloud-consumer-order80/target/generated-sources/
+cloud-eureka-server7001/target/classes/application.yml
+cloud-eureka-server7001/target/generated-sources/
+cloud-eureka-server7002/target/classes/application.yml
+cloud-eureka-server7002/target/generated-sources/
+cloud-provider-payment8001/target/classes/application.yml
+cloud-provider-payment8001/target/classes/mapper/
+cloud-provider-payment8001/target/generated-sources/
+cloud-provider-payment8002/target/classes/application.yml
+cloud-provider-payment8002/target/classes/mapper/
+cloud-provider-payment8002/target/generated-sources/
+cloud-provider-payment8004/target/classes/application.yml
+cloud-provider-payment8004/target/generated-sources/
