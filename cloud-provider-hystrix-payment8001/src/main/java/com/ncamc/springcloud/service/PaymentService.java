@@ -1,6 +1,16 @@
 package com.ncamc.springcloud.service;
 
+import org.springframework.stereotype.Service;
+
+import java.util.concurrent.TimeUnit;
+
 public interface PaymentService {
-    public String PaymentInfo(Integer id);
-    public String PaymentInfoTimeout(Integer id);
+
+    //正常访问
+    public String paymentInfo_OK(Integer id);
+    //超时访问
+    public String paymentInfo_TimeOut(Integer id);
+
+    public String paymentInfo_TimeOutHandler(Integer id);
+
 }

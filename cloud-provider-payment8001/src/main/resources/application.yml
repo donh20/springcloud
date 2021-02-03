@@ -7,7 +7,8 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource  #当前的数据源操作类型
     driver-class-name: org.gjt.mm.mysql.Driver    #mysql驱动包
-    url: jdbc:mysql://localhost:3306/db2021?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    #url: jdbc:mysql://localhost:3306/db2021?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://10.10.3.114:3307/db2021?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
 
@@ -21,5 +22,5 @@ eureka:
     #是否从EurekaServer抓取已有的注册信息，默认为true，集群必须设置为true才能配合ribbon使用负载均衡
     fetch-registry: true
     service-url:
-      #defaultZone: http://localhost:7001/eureka
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      defaultZone: http://localhost:7001/eureka
+      #defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka

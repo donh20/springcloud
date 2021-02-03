@@ -1,28 +1,31 @@
 package com.ncamc.springcloud.controller;
 
 import com.ncamc.springcloud.service.PaymentHystrixService;
+import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@Slf4j
 @RestController
+@Slf4j
 public class OrderHystrixController {
     @Resource
     private PaymentHystrixService paymentHystrixService;
 
     @GetMapping("/consumer/payment/hystrix/ok/{id}")
-    public String paymentInfo(@PathVariable("id") Integer id){
-        String result = paymentHystrixService.paymentInfo(id);
+    public String paymentInfo_OK(@PathVariable("id") Integer id) {
+        String result = paymentHystrixService.paymentInfo_OK(id);
         return result;
     }
 
     @GetMapping("/consumer/payment/hystrix/timeout/{id}")
-    public String paymentInfoTimeout(@PathVariable("id") Integer id){
-        String result = paymentHystrixService.paymentInfoTimeout(id);
+    public String paymentInfo_TimeOut(@PathVariable("id") Integer id){
+        String result = paymentHystrixService.paymentInfo_TimeOut(id);
         return result;
     }
 }
