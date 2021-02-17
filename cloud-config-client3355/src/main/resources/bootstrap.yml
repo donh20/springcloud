@@ -19,6 +19,12 @@ spring:
 #      name: config #配置文件名
 #      profile: test  #拼起来是:dev分支上的config-test.yml配置文件
       uri: http://localhost:3344
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 eureka:
   client:
     service-url:
