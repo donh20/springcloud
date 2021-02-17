@@ -1,0 +1,31 @@
+#application.yml是用户级的资源配置项
+#bootstrap.yml是系统级的,优先级更高
+#为什么用application不够?
+#Spring Cloud会创建一个Bootstrap Context,作为Spring应用的Application Context的父上下文,初始化的时候,负责从外部资源加载配置属性并解析配置
+#可以理解为,Bootstrap是和外部的config-server沟通,application是自己用的,先从3344加载进bootstrap,然后再加载application,两个拼起来
+
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      name: config
+      profile: dev  #拼起来是:master分支上的config-dev.yml配置文件
+#      label: dev #分支名
+#      name: config #配置文件名
+#      profile: test  #拼起来是:dev分支上的config-test.yml配置文件
+      uri: http://localhost:3344
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

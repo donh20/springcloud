@@ -1,0 +1,20 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          #uri: git@github.com:donh20/springcloud-config.git
+          uri: https://github.com/donh20/springcloud-config.git
+          search-paths:
+            - springcloud-config
+#        native:
+#          search-locations: classpath:config/
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:7001/eureka
