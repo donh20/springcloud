@@ -10,6 +10,7 @@ public class GatewayConfig {
     /*
     * 配置一个ID为: path_route_ncamc的路由规则
     * 当访问地址http://localhost:9527/guonei 时会自动转发到地址 http://news.baidu.com/guonei
+    * 在这里写代码，功能等同于在yml文件里写配置
     * */
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder){
