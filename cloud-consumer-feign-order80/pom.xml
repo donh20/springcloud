@@ -11,9 +11,6 @@
 
     <artifactId>cloud-consumer-feign-order80</artifactId>
 
-
-
-
     <!--openfeign-->
     <dependencies>
         <dependency>
