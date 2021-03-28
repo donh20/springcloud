@@ -27,6 +27,8 @@
     <module>cloud-config-client3366</module>
     <module>cloud-stream-rabbitmq-provider8801</module>
       <module>cloud-provider-payment8003</module>
+    <module>cloud-stream-rabbitmq-consumer8802</module>
+    <module>cloud-stream-rabbitmq-consumer8803</module>
   </modules>
 
   <!--统一管理jar包版本-->
@@ -122,7 +124,6 @@
       <dependency>
         <groupId>log4j</groupId>
         <artifactId>log4j</artifactId>
-        <version>${log4j.version}</version>
       </dependency>
 
       <dependency>
