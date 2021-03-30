@@ -29,6 +29,7 @@
       <module>cloud-provider-payment8003</module>
     <module>cloud-stream-rabbitmq-consumer8802</module>
     <module>cloud-stream-rabbitmq-consumer8803</module>
+    <module>cloudalibaba-provider-payment9001</module>
   </modules>
 
   <!--统一管理jar包版本-->
@@ -71,6 +72,14 @@
       SpringAlibaba:2.2.0.RELEASE
     -->
     <dependencies>
+      <!--spring cloud alibaba 2.1.0.RELEASE-->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>2.1.0.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <!--springboot2.3.5-->
       <dependency>
         <groupId>org.springframework.boot</groupId>
