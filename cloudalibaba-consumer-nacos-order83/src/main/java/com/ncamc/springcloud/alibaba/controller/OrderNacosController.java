@@ -15,6 +15,7 @@ public class OrderNacosController {
     @Resource
     private RestTemplate restTemplate;
 
+    //以前的写法
     //@Resource
     //private final String SERVER_URL = "http://nacos-payment-provider";
     @Value("${service-url.nacos-user-service}")
